@@ -284,6 +284,7 @@ impl MotionWorld<'_, '_, '_> {
     }
     /// `Entity.baseTick`'s fluid phase: `wasEyeInWater`, `updateFluidInteraction`,
     /// swimming and remaining fire, lava's fall halving, then the first-tick clear.
+    #[horizon_mod_api_macros::replaceable]
     pub fn fluid_base_tick(&mut self) -> Result<()> {
         self.player.fluids.was_eye_in_water = self.player.is_eye_in_fluid(WATER);
         self.update_fluids()?;

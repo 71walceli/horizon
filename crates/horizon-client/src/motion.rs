@@ -889,6 +889,7 @@ impl PlayerMotion {
         };
         self.run_sprint_tick(keys, conditions, sprint_window)
     }
+    #[horizon_mod_api_macros::replaceable]
     fn sprint_conditions(&self) -> crate::sprint::Conditions {
         crate::sprint::Conditions {
             sprinting: self.sprinting,
@@ -1302,6 +1303,7 @@ impl MotionWorld<'_, '_, '_> {
     pub fn check_movement_statistics(&mut self, delta: Vec3) -> Result<()> {
         movement_statistics::check(self, delta)
     }
+    #[horizon_mod_api_macros::replaceable]
     fn dry_tick(&mut self, input: TickInput) -> Result<()> {
         if self.player.no_jump_delay > 0 {
             self.player.no_jump_delay -= 1;
@@ -1373,6 +1375,7 @@ impl MotionWorld<'_, '_, '_> {
     }
     /// Player.travel: swim steering, then LivingEntity.travel (fluids first,
     /// then gliding, then air), keeping 0.6 of the vertical speed while flying.
+    #[horizon_mod_api_macros::replaceable]
     fn player_travel(&mut self, input: Vec3) -> Result<()> {
         // The player's one physical move this tick goes through the move gate
         // (arismoko/horizon#2414): whichever travel branch runs, `move_self` arms the gate it

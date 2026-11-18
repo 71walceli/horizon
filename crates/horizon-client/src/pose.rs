@@ -210,6 +210,7 @@ impl PlayerMotion {
     /// counts the swimming pose and the fall-flying pose a glide that just
     /// ended still holds, so the tick after an elytra lands moves at sneaking
     /// speed (#8295).
+    #[horizon_mod_api_macros::replaceable]
     pub fn moving_slowly(&self) -> bool {
         let visually_swimming =
             self.pose == Pose::Swimming || (!self.fall_flying && self.pose == Pose::FallFlying);
