@@ -38,7 +38,7 @@ impl MotionWorld<'_, '_, '_> {
         )?;
         Ok(())
     }
-    pub(super) fn tick_remaining_fire(&mut self) -> Result<()> {
+    pub fn tick_remaining_fire(&mut self) -> Result<()> {
         if self.player.spectator {
             self.player.fire_ticks = 0;
         }
@@ -308,7 +308,7 @@ impl MotionWorld<'_, '_, '_> {
     }
     /// `LivingEntity.aiStep`'s jump phase: rise in water or lava, else jump
     /// from the ground (or from shallow fluid); nothing while flying.
-    pub(super) fn jump_phase(&mut self) -> Result<()> {
+    pub fn jump_phase(&mut self) -> Result<()> {
         if !self.player.jumping || self.player.flying {
             self.player.no_jump_delay = 0;
             return Ok(());
